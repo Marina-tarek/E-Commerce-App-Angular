@@ -1,8 +1,8 @@
-<nav class="bg-white">
+<nav class="bg">
     <div class="mx-auto max-w-screen-xl px-2 sm:px-6 lg:px-5">
       <div class="flex h-16 items-center justify-between">
         <div class="flex-1 md:flex md:items-center md:gap-12">
-          <a class="block text-teal-600" href="login">
+          <a class="block text-teal-600" routerLink="login">
             <img src="./assets/images/freshcart-logo.svg" class="h-6 mr-3 sm:h-9" alt="Logo">
           </a>
         </div>
@@ -11,32 +11,32 @@
           <nav aria-label="Global" class="hidden md:block">
             <ul class="flex items-center gap-6 text-sm">
                 <li>
-                    <a class="nav-link hover:bg-green-600 hover:text-white cursor-pointer text-lg p-1">
+                    <a class="nav-link hover:bg-green-600 hover:text-white cursor-pointer text-lg p-1" href="https://www.instagram.com/accounts/login/" target="_blank">
                         <i class="fa-brands fa-instagram"></i>
                     </a>
                 </li>
                 <li>
-                    <a class="nav-link hover:bg-green-600 hover:text-white cursor-pointer text-lg p-1">
+                    <a class="nav-link hover:bg-green-600 hover:text-white cursor-pointer text-lg p-1" href="https://www.facebook.com/mrina.tarek" target="_blank">
                         <i class="fa-brands fa-facebook"></i>
                     </a>
                 </li>
                 <li>
-                    <a class="nav-link hover:bg-green-600 hover:text-white cursor-pointer text-lg p-1">
+                    <a class="nav-link hover:bg-green-600 hover:text-white cursor-pointer text-lg p-1" href="https://www.tiktok.com/" target="_blank">
                         <i class="fa-brands fa-tiktok"></i>
                     </a>
                 </li>
                 <li>
-                    <a class="nav-link hover:bg-green-600 hover:text-white cursor-pointer text-lg p-1">
+                    <a class="nav-link hover:bg-green-600 hover:text-white cursor-pointer text-lg p-1" href="https://x.com/" target="_blank">
                         <i class="fa-brands fa-twitter"></i>
                     </a>
                 </li>
                 <li>
-                    <a class="nav-link hover:bg-green-600 hover:text-white cursor-pointer text-lg p-1">
+                    <a class="nav-link hover:bg-green-600 hover:text-white cursor-pointer text-lg p-1" href="https://www.linkedin.com/in/marina-tarek-83a5a7320" target="_blank">
                         <i class="fa-brands fa-linkedin"></i>
                     </a>
                 </li>
                 <li>
-                    <a class="nav-link hover:bg-green-600 hover:text-white cursor-pointer text-lg p-1">
+                    <a class="nav-link hover:bg-green-600 hover:text-white cursor-pointer text-lg p-1" href="https://www.youtube.com/" target="_blank">
                         <i class="fa-brands fa-youtube"></i>
                     </a>
                 </li>
@@ -46,16 +46,12 @@
   
           <div class="flex items-center gap-3">
             <div class="sm:flex sm:gap-4">
-              <a
-                class="rounded-md px-5 py-2.5 text-sm font-medium text-white shadow btn-main"
-                href="#"
-              >
+              <a class="cursor-pointer rounded-md px-5 py-2.5 text-sm font-medium " routerLink="login" routerLinkActive="btn-main" >
                 Login
               </a>
   
-              <div class="hidden sm:flex">
-                <a
-                  class="rounded-md bg-gray-100 px-5 py-2.5 text-sm font-medium text-teal-600" routerLink="register" routerActive="">
+              <div class="sm:flex">
+                <a class="cursor-pointer rounded-md  px-5 py-2.5 text-sm font-medium" routerLink="register" routerLinkActive="btn-main">
                   Register
                 </a>
               </div>

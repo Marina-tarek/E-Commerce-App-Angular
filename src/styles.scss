@@ -23,6 +23,15 @@
 body {
   font-family: var(--font-family) !important;
 }
+.main-border{
+  border-color: var(--main-color);
+}
+.main-text{
+  color: var(--main-color);
+}
+.bg-main-light {
+  background-color: var(--light-color) !important;
+}
 .active-link {
   padding: 5px 10px;
     background-color: var(--main-color) !important;

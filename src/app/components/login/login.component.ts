@@ -40,6 +40,13 @@ console.log(res);
 if(res.message == 'success'){
   this.msgSuccess=true
   setTimeout(() => {
+
+    // 1-save token
+    localStorage.setItem('userToken',res.token);
+    // 2-decode to token
+    this._AuthService.saveUserData()
+    // 3-navigate to home
+
     this._Router.navigate(['/home'])
   }, 2000);
 }

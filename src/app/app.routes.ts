@@ -9,17 +9,19 @@ import { BlankLayoutComponent } from './layout/blank-layout/blank-layout.compone
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { CartComponent } from './components/cart/cart.component';
+import { authGuard } from './core/gaurds/auth.guard';
+import { loginGuard } from './core/gaurds/login.guard';
 
 export const routes: Routes = [
     // {path:'',redirectTo:"home",pathMatch:'full'}
     // routing between two navbar
 
-    {path:'',component:AuthLayoutComponent,children:[
+    {path:'',component:AuthLayoutComponent,canActivate:[loginGuard],children:[
         {path:'',redirectTo:"login",pathMatch:'full'},
         {path:'login',component:LoginComponent},
         {path:'register',component:RegisterComponent}
     ]},
-    {path:'',component:BlankLayoutComponent,children:[
+    {path:'',component:BlankLayoutComponent,canActivate:[authGuard],children:[
         {path:'',redirectTo:"home",pathMatch:'full'},
         {path:'home',component:HomeComponent},
         {path:'products',component:ProductComponent},

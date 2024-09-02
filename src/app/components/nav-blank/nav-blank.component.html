@@ -4,7 +4,7 @@
             <img src="./assets/images/freshcart-logo.svg" class="h-6 mr-3 sm:h-9" alt="Logo">
             
         </a>
-        <div class="flex items-center lg:order-2 w-full justify-end">
+        <div class="flex items-center lg:order-2  justify-end">
 
 
 
@@ -79,7 +79,7 @@
             </a>
         </li>
         <li class="cursor-pointer">
-            <a class="nav-link" routerLink="home">
+            <a  class="nav-link" (click)="_AuthService.signOut()" >
                SignOut
             </a>
         </li>

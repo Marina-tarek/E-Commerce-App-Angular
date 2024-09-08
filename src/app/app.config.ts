@@ -1,6 +1,7 @@
 import { ApplicationConfig, importProvidersFrom } from '@angular/core';
 import {
   provideRouter,
+  withHashLocation,
   withInMemoryScrolling,
   withViewTransitions,
 } from '@angular/router';
@@ -22,13 +23,15 @@ export const appConfig: ApplicationConfig = {
     provideRouter(
       routes,
       withViewTransitions(),
-      withInMemoryScrolling({ scrollPositionRestoration: 'top' })
+      withInMemoryScrolling({ scrollPositionRestoration: 'top' }),
+      withHashLocation()
     ),
     provideClientHydration(),
     provideHttpClient(withFetch() , withInterceptors([headerInterceptor, loadingInterceptor])),
     // importProvidersFrom(BrowserAnimationsModule),
     provideAnimations(),
     provideToastr()
+    
   ],
 };
 // 

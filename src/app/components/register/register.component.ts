@@ -1,9 +1,10 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnDestroy } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AuthService } from '../../core/service/auth.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { NgClass } from '@angular/common';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-register',
@@ -50,12 +51,13 @@ return null
   return {mismatch:true}
 }
 }
+registerSub !:Subscription
 
 RegisterSubmit():void{
 
 if (this.registerForm.valid) {
  this.isLoading=true
-  this._AuthService.setRegisterForm(this.registerForm.value).subscribe({
+  this.registerSub = this._AuthService.setRegisterForm(this.registerForm.value).subscribe({
     
     next:(res)=>{
 console.log(res);
@@ -63,7 +65,7 @@ if(res.message == 'success'){
   this.msgSuccess=true
   setTimeout(() => {
     this._Router.navigate(['/login'])
-  }, 2000);
+  }, 500);
 }
 this.isLoading=false;
     },
@@ -82,4 +84,8 @@ this.isLoading=false;
 }
   
  }
+ngOnDestroy(): void {
+this.registerSub?.unsubscribe()
+  
+}
 }

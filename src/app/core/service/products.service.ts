@@ -12,7 +12,7 @@ private readonly _HttpClient=inject(HttpClient);
 getAllProduct():Observable<any>{
   return this._HttpClient.get(`${environment.baseURL}/api/v1/products`)
 }
-getSpecificProduct(id:string):Observable<any>{
+getSpecificProduct(id:string |null):Observable<any>{
   return this._HttpClient.get(`${environment.baseURL}/api/v1/products/${id}`)
 }
 

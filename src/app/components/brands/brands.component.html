@@ -1,1 +1,21 @@
-<p>brands works!</p>
+<section class="my-4">
+    <h2 class="capitalize bold main-text text-3xl mb-4 text-center">Popular Brands:</h2>
+    <div class="w-full">
+        <div class="gap-2 flex flex-wrap sm:justify-center  items-center md:justify-around">
+            @for (brand of brandList; track $index) {
+            <div class="sm:w-10/12 md:w-4/12 lg:w-2/12" >
+                <div class="product ">
+                    <div  class="h-56">
+                        <img [src]="brand.image" class="w-full h-5/6" [alt]="brand.name">
+                    <div class="p-2">
+                        <h3 class="text-sm main-text capitalize">{{brand.name}} </h3>
+                       
+                    </div>
+                    </div>
+
+                </div>
+            </div>
+            }
+        </div>
+    </div>
+</section>

@@ -1,0 +1,43 @@
+@if(productDetails){
+    <section class="p-3">
+        <h2 class="main-text capitalize font-semibold text-3xl text-center">details products</h2>
+        <div class="flex flex-wrap items-center p-4">
+            <div class="w-3/12">
+                <owl-carousel-o [options]="customOptionsProductImag">
+
+                    @for (productImags of productDetails.images; track productDetails._id) {
+                    <ng-template carouselSlide>
+                        <div>
+                            <img [src]="productImags" [alt]="productDetails.title" class="w-full h-64">
+
+                        </div>
+                    </ng-template>
+                    }
+            
+                </owl-carousel-o>
+            </div>
+            <div class="w-9/12">
+    <div class="px-2">
+        <h2 class="main-text font-medium text-2xl mb-3">{{productDetails.title}}</h2>
+        <p class="text-gray-500">{{productDetails.description}}</p>
+        <h3 class="text-lg mb-2">{{productDetails.category.name}}</h3>
+        <div class="flex justify-between items-center mb-2">
+            <span class="text-sm">{{productDetails.price}}EGP</span>
+            <div>
+                @for (num of [1,2,3,4,5].slice(0,productDetails.ratingsAverage); track $index) {
+                <span> <i class="fas fa-star text-yellow-300"></i></span>
+                }
+                @if (productDetails.ratingsAverage %1 !== 0) {<i
+                    class="fa-solid fa-star-half-stroke text-yellow-300"></i>}
+                <span class="text-gray-400">{{productDetails.ratingsAverage}}</span>
+            </div>
+        </div>
+        <div class="flex justify-center py-2 w-full">
+            <button class="btn-main w-9/12" (click)="addProductToCart(productDetails._id)">+Add to Cart</button>
+        </div>
+    </div>
+            </div>
+        </div>
+    
+    </section>
+}

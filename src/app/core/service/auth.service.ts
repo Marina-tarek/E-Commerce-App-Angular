@@ -45,4 +45,14 @@ setTimeout(() => {
 }, 500);
 
  }
+
+ setEmailVerify(data:object):Observable<any>{
+  return this._HttpClient.post(`${environment.baseURL}/api/v1/auth/forgotPasswords`,data)
+ }
+ setCodeVerify(data:object):Observable<any>{
+  return this._HttpClient.post(`${environment.baseURL}/api/v1/auth/verifyResetCode`,data)
+ }
+ resetNewPassword(data:object):Observable<any>{
+  return this._HttpClient.put(`${environment.baseURL}/api/v1/auth/resetPassword`,data)
+ }
 }

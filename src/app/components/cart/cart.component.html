@@ -1,1 +1,34 @@
-<p>cart works!</p>
+<section class="justify-center flex  items-center ">
+    <div class="bg p-6 m-5 shadow-md w-10/12 rounded">
+        <div class="flex  justify-between items-center">
+            <h2 class="capitalize  text-3xl font-semibold mb-2">shop cart</h2>
+            <button class="btn-main" (click)="clearCart()">Clear Cart</button>
+        </div>
+        
+        <p class="capitalize my-2 main-text">total cart price : {{cartDetails.totalCartPrice}} EGP</p>
+        @for (item of cartDetails.products; track item.product.id) {
+        <div class="flex justify-center items-center my-3 border-b-2 py-2 h-3/6">
+            <div class="w-1/12 me-2 ">
+                <img [src]="item.product.imageCover" class="w-full h-32" [alt]="item.product.title">
+            </div>
+            <div class="w-9/12">
+                <h3 class="mb-2">{{item.product.title}}</h3>
+            
+                <p class="main-text mb-2">price :{{item.price}}</p>
+                <a class="cursor-pointer text-red-600" (click)="deleteProduct(item.product.id)"><i
+                        class="fa-solid fa-trash-can text-red-600"></i> Delete</a>
+            </div>
+            <div class="w-2/12 text-xl">
+                <i class="fa-solid fa-circle-minus main-text me-2 cursor-pointer" (click)="updateCount(item.product.id , item.count - 1)"></i> 
+                {{item.count}}
+                <i class="fa-solid fa-circle-plus main-text ms-2 cursor-pointer" (click)="updateCount(item.product.id , item.count + 1)"></i>
+            </div>
+
+        </div>
+        }
+        <div class="flex ">
+            <button class="btn-main mt-2 me-2" [routerLink]="['/orders',cartDetails._id]">Orders</button>
+            <button class="btn-main mt-2 ms-2">Payment</button>
+        </div>
+    </div>
+</section>

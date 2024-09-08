@@ -1,30 +1,106 @@
+<section class="py-5 px-6">
+    <!-- main slider -->
 <section>
-    <h2 class="capitalize ">popular products:</h2>
+    <div class=" row ">
+        <div class="main-img">
+            <div>
+                <owl-carousel-o [options]="customOptionsMain">
+                    <ng-template carouselSlide>
+                        <img src="./assets/images/slider-image-3.jpeg" alt="slider-image" class="w-full h-80">
+                    </ng-template>
+                    <ng-template carouselSlide>
+                        <img src="./assets/images/banner-4.jpeg" alt="grocery-banner" class="w-full h-80">
+                    </ng-template>
+                    <ng-template carouselSlide>
+                        <img src="./assets/images/grocery-banner.png" alt="grocery-banner" class="w-full h-80">
+                    </ng-template>
+                    <ng-template carouselSlide>
+                        <img src="./assets/images/grocery-banner-2.jpeg" alt="grocery-banner" class="w-full h-80">
+                    </ng-template>
+                    <ng-template carouselSlide>
+                        <img src="./assets/images/blog-img-1.jpeg" alt="slider-image" class="w-full h-80">
+                    </ng-template>
+                    <ng-template carouselSlide>
+                        <div>
+                            <img src="./assets/images/blog-img-2.jpeg" alt="slider-image" class="w-full h-80">
+                        </div>
+                    </ng-template>
+
+                </owl-carousel-o>
+            </div>
+        </div>
+        <div class="side-img">
+            <div>
+                <img src="./assets/images/slider-image-2.jpeg" class="w-full h-40" alt="slider-image-2">
+                <img src="./assets/images/slider-image-1.jpeg" class="w-full h-40" alt="slider-image-1">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- category-slider -->
+<section class="my-3">
+    <h2 class="capitalize font-semibold main-text text-3xl mb-4">Popular Categories</h2>
+
+    <owl-carousel-o [options]="customOptionsCategory">
+
+        @for (category of categoriesList; track category._id) {
+        <ng-template carouselSlide>
+            <div>
+                <img [src]="category.image" [alt]="category.name" class="w-full h-64">
+                <p class="main-text text-center">{{category.name}}</p>
+            </div>
+        </ng-template>
+        }
+
+    </owl-carousel-o>
+</section>
+
+
+<!-- product-section -->
+<section class="my-4">
+    <h2 class="capitalize font-semibold main-text text-3xl mb-4">popular products:</h2>
     <div class="w-full">
         <div class="gap-2 flex flex-wrap justify-between items-center md:justify-around">
-            @for (product of productList.slice(0,16); track product.id) {
-            <div class="sm:w-5/12 md:w-4/12 lg:w-2/12">
+            @for (product of productList.slice(0,20); track product.id) {
+            <div class="sm:w-5/12 md:w-4/12 lg:w-2/12" >
                 <div class="product ">
-                    <img [src]="product.imageCover" class="w-full" [alt]="product.title">
+                    <div [routerLink]="['/details',product.id]">
+                        <img [src]="product.imageCover" class="w-full" [alt]="product.title">
                     <div class="p-2">
-                        <h3 class="text-sm main-text">{{product.category.name}}</h3>
+                        <h3 class="text-sm main-text">{{product.category.name|uppercase}}</h3>
                         <h4 class="text-sm">{{product.title.split(' ').slice(0,2).join(' ')}}</h4>
 
                         <div class="flex justify-between items-center">
                             <span class="text-sm">{{product.price}}EGP</span>
                             <div>
+                                @for (num of [1,2,3,4,5].slice(0,product.ratingsAverage); track $index) {
                                 <span> <i class="fas fa-star text-yellow-300"></i></span>
+                                }
+                                @if (product.ratingsAverage %1 !== 0) {<i
+                                    class="fa-solid fa-star-half-stroke text-yellow-300"></i>}
                                 <span class="text-gray-400">{{product.ratingsAverage}}</span>
                             </div>
                         </div>
-                        <div class="flex justify-center">
-                            <button class="btn-main ">Add to Cart</button>
-                        </div>
+                       
                     </div>
+                    </div>
+                    <div class="flex justify-center py-2 w-full">
+                        <button class="btn-main w-9/12 " (click)="addProductInCart(product.id)">Add to Cart</button>
+                        <div (click)="addFavouriteProduct(product.id)" >
+                            @if(wishList){
+                                <i class="fa-solid fa-heart text-yellow-400 p-2"></i>
+                            }@else {
+                                <i class="fa-solid fa-heart p-2"></i>
+                            }
 
+                        </div>
+                        
+                    </div>
                 </div>
             </div>
             }
         </div>
     </div>
+</section>
 </section>
